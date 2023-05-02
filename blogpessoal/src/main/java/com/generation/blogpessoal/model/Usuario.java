@@ -20,72 +20,84 @@ import jakarta.validation.constraints.Size;
 @Table(name = "tb_usuarios")
 public class Usuario {
 
-		@Id
-		@GeneratedValue(strategy = GenerationType.IDENTITY)
-		private Long id;
-		
-		@NotNull(message = "O nome é obrigatório!")
-		private String nome;
-		
-		@NotNull(message = "O usuário é obrigatório!")
-		private String usuario;
-		
-		@NotBlank(message = "A senha é obrigatória!")
-		private String senha;
-		
-		@Size(max = 5000, message = "O link da foto não pode ser maior que 5000 caracteres!")
-		private String foto;
-		
-		@OneToMany(fetch = FetchType.LAZY,mappedBy = "usuario", cascade = CascadeType.REMOVE)
-		@JsonIgnoreProperties("usuario")
-		private List<Postagem> postagem;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-		public Long getId() {
-			return id;
-		}
+	@NotNull(message = "O nome é obrigatório!")
+	private String nome;
 
-		public void setId(Long id) {
-			this.id = id;
-		}
+	@NotNull(message = "O usuário é obrigatório!")
+	private String usuario;
 
-		public String getNome() {
-			return nome;
-		}
+	@NotBlank(message = "A senha é obrigatória!")
+	private String senha;
 
-		public void setNome(String nome) {
-			this.nome = nome;
-		}
+	@Size(max = 5000, message = "O link da foto não pode ser maior que 5000 caracteres!")
+	private String foto;
 
-		public String getUsuario() {
-			return usuario;
-		}
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties("usuario")
+	private List<Postagem> postagem;
 
-		public void setUsuario(String usuario) {
-			this.usuario = usuario;
-		}
+	public Long getId() {
+		return id;
+	}
 
-		public String getSenha() {
-			return senha;
-		}
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-		public void setSenha(String senha) {
-			this.senha = senha;
-		}
+	public String getNome() {
+		return nome;
+	}
 
-		public String getFoto() {
-			return foto;
-		}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-		public void setFoto(String foto) {
-			this.foto = foto;
-		}
+	public String getUsuario() {
+		return usuario;
+	}
 
-		public List<Postagem> getPostagem() {
-			return postagem;
-		}
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
 
-		public void setPostagem(List<Postagem> postagem) {
-			this.postagem = postagem;
-		}
-		
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
+	public List<Postagem> getPostagem() {
+		return postagem;
+	}
+
+	public void setPostagem(List<Postagem> postagem) {
+		this.postagem = postagem;
+	}
+
+	public Usuario(Long id, String nome, String usuario, String senha, String foto) {
+		this.id = id;
+		this.nome = nome;
+		this.usuario = usuario;
+		this.senha = senha;
+		this.foto = foto;
+
+	}
+
+	public Usuario() {
+	}
+	
 }
